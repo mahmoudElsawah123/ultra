@@ -6,7 +6,12 @@ import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl";
 import { navLinks } from "@/app/utils/dummy";
 
-const NavbarLinksData = () => {
+interface HeaderProps {
+  locale: string;
+}
+
+
+const NavbarLinksData: React.FC<HeaderProps> = ({locale}) => {
   const  tNav  = useTranslations("navbarPage");
   const  tHome  = useTranslations("homePage");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -19,7 +24,7 @@ const NavbarLinksData = () => {
 
   return (
     <div className="hidden h-[72px] lg:flex gap-[28px]">
-      <button onClick={() => handleNavigation("/")} className="cursor-pointer text-custom-black leading-[120%] flex items-center hoverCustomBtn">
+      <button onClick={() => handleNavigation(`/${locale}`)} className="cursor-pointer text-custom-black leading-[120%] flex items-center hoverCustomBtn">
         {tNav("nav-Home")}
       </button>
       <button onClick={() => handleNavigation("/ultra-business-solutions")} className="cursor-pointer text-custom-black leading-[120%] flex items-center hoverCustomBtn">

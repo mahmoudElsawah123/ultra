@@ -39,7 +39,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction}>
       <body className={`${notoKufiArabic.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
-          <Header />
+          <Header locale={locale}/>
           {children}
           <Footer />
         </NextIntlClientProvider>
